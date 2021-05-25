@@ -1,3 +1,5 @@
-create table employee(empno int primary key,emp_name char(40),DOB date,address varchar(100),mobile_no int,deptno int,salary int);
+create table employee(empno int primary key,emp_name char(40),DOB date,address varchar(100),mobile_no varchar,deptno int,salary int);
 
 create table department(deptno int primary key,dept_name char(40),location char(100) not null);
+alter table employee doj date;
+alter table employee desg char(40);
