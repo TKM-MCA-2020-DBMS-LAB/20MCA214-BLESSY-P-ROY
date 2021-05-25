@@ -15,11 +15,11 @@ mysql> DESCRIBE EMPLOYEE;
 9 rows in set (0.29 sec)
 
 i)--employee
-insert into employee values(1001,"Blessy",'1992-04-05',"Blessyvilla",8787878787,11,2000,'2000-05-07',"clerk");
-insert into employee values(1002,"Anu",'1970-06-12',"Anuvilla",4578655566,12,20000,'2003-01-13',"manager");
-insert into employee values(1003,"Annu",'1960-07-19',"Annuvilla",9876545678,13,3000,'2000-09-15',"staff");
-insert into employee values(1004,"Ponnu",'1992-09-08',"Ponnuvilla",9898765643,14,7800,'2010-09=12',"account");
-insert into employee values(1005,"Gopu",'1994-04-09',"Gopuvilla",9787665345,15,18000,'2010-09-11',"coorinator");
+insert into employee values(1001,"Blessy",'1992-04-05',"Blessyvilla",8787878787,1,2000,'2000-05-07',"clerk");
+insert into employee values(1002,"Anu",'1970-06-12',"Anuvilla",4578655566,2,20000,'2003-01-13',"manager");
+insert into employee values(1003,"Annu",'1960-07-19',"Annuvilla",9876545678,3,3000,'2000-09-15',"staff");
+insert into employee values(1004,"Ponnu",'1992-09-08',"Ponnuvilla",9898765643,4,7800,'2010-09=12',"account");
+insert into employee values(1005,"Gopu",'1994-04-09',"Gopuvilla",9787665345,5,18000,'2010-09-11',"coorinator");
 
 --department
 insert into department values(1,"accounting","kollam");
@@ -33,11 +33,11 @@ insert into department values(3,"casher","kochi");
 +-------+----------+------------+-------------+------------+--------+--------+------------+------------+
 | empno | emp_name | DOB        | address     | mobile_no  | deptno | salary | doj        | desg       |
 +-------+----------+------------+-------------+------------+--------+--------+------------+------------+
-|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 8787878787 |     11 |   2000 | 2000-05-07 | clerk      |
-|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |     12 |  20000 | 2003-01-13 | manager    |
-|  1003 | Annu     | 1960-07-19 | Annuvilla   | 9876545678 |     13 |   3000 | 2000-09-15 | staff      |
-|  1004 | Ponnu    | 1992-09-08 | Ponnuvilla  | 9898765643 |     14 |   7800 | 2010-09-12 | account    |
-|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |     15 |  18000 | 2010-09-11 | coorinator |
+|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 8787878787 |     1 |   2000 | 2000-05-07 | clerk      |
+|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |     2 |  20000 | 2003-01-13 | manager    |
+|  1003 | Annu     | 1960-07-19 | Annuvilla   | 9876545678 |     3 |   3000 | 2000-09-15 | staff      |
+|  1004 | Ponnu    | 1992-09-08 | Ponnuvilla  | 9898765643 |     4 |   7800 | 2010-09-12 | account    |
+|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |     5 |  18000 | 2010-09-11 | coorinator |
 +-------+----------+------------+-------------+------------+--------+--------+------------+------------+
 5 rows in set (0.07 sec)
 
@@ -53,8 +53,122 @@ mysql> select * from department;
 +--------+------------+------------+
 5 rows in set (0.07 sec)
 
-ii)
+iii)
+mysql> SELECT empno,emp_name FROM employee WHERE deptno="2";
++-------+----------+
+| empno | emp_name |
++-------+----------+
+|  1002 | Anu      |
++-------+----------+
+1 row in set (0.00 sec)
+
+iv)
+
+mysql> SELECT empno,emp_name,desg,deptno,salary FROM employee ORDER By salary DESC;
++-------+----------+------------+--------+--------+
+| empno | emp_name | desg       | deptno | salary |
++-------+----------+------------+--------+--------+
+|  1002 | Anu      | manager    |      2 |  20000 |
+|  1005 | Gopu     | coorinator |      5 |  18000 |
+|  1004 | Ponnu    | account    |      4 |   7800 |
+|  1003 | Annu     | staff      |      3 |   3000 |
+|  1001 | Blessy   | clerk      |      1 |   2000 |
++-------+----------+------------+--------+--------+
+5 rows in set (0.00 sec)
+
+v)
+
+mysql> SELECT empno,emp_name FROM employee WHERE salary BETWEEN 20000 AND 50000;
++-------+----------+
+| empno | emp_name |
++-------+----------+
+|  1002 | Anu      |
++-------+----------+
+1 row in set (0.00 sec)
+
+vi)
+mysql> SELECT DISTINCT desg FROM employee;
++------------+
+| desg       |
++------------+
+| clerk      |
+| manager    |
+| staff      |
+| account    |
+| coorinator |
++------------+
+5 rows in set (0.05 sec)
+
+vii)
+
+ mysql> SELECT deptno,SUM(salary) FROM employee GROUP BY deptno;
++--------+-------------+
+| deptno | SUM(salary) |
++--------+-------------+
+|      1 |        2000 |
+|      2 |       20000 |
+|      3 |        3000 |
+|      4 |        7800 |
+|      5 |       18000 |
++--------+-------------+
+5 rows in set (0.10 sec)
+
+viii)
+mysql> UPDATE employee SET salary=25000 WHERE desg="manager";
+Query OK, 1 row affected (0.11 sec)
+mysql> select * from employee;
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+| empno | emp_name | DOB        | address     | mobile_no  | deptno | salary | doj        | desg       |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 8787878787 |      1 |   2000 | 2000-05-07 | clerk      |
+|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |      2 |  25000 | 2003-01-13 | manager    |
+|  1003 | Annu     | 1960-07-19 | Annuvilla   | 9876545678 |      3 |   3000 | 2000-09-15 | staff      |
+|  1004 | Ponnu    | 1992-09-08 | Ponnuvilla  | 9898765643 |      4 |   7800 | 2010-09-12 | account    |
+|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |      5 |  18000 | 2010-09-11 | coorinator |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+5 rows in set (0.12 sec)
+
+ix)
+
+mysql> UPDATE employee SET mobile_no=7034528879 WHERE emp_name="Blessy";
+Query OK, 1 row affected (0.13 sec)
+mysql> select * from employee;
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+| empno | emp_name | DOB        | address     | mobile_no  | deptno | salary | doj        | desg       |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 7034528879 |      1 |   2000 | 2000-05-07 | clerk      |
+|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |      2 |  25000 | 2003-01-13 | manager    |
+|  1003 | Annu     | 1960-07-19 | Annuvilla   | 9876545678 |      3 |   3000 | 2000-09-15 | staff      |
+|  1004 | Ponnu    | 1992-09-08 | Ponnuvilla  | 9898765643 |      4 |   7800 | 2010-09-12 | account    |
+|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |      5 |  18000 | 2010-09-11 | coorinator |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+5 rows in set (0.12 sec)
+
+x)
+mysql> DELETE FROM employee WHERE salary=7800;
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from employee;
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+| empno | emp_name | DOB        | address     | mobile_no  | deptno | salary | doj        | desg       |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 7034528879 |      1 |   2000 | 2000-05-07 | clerk      |
+|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |      2 |  25000 | 2003-01-13 | manager    |
+|  1003 | Annu     | 1960-07-19 | Annuvilla   | 9876545678 |      3 |   3000 | 2000-09-15 | staff      |
+|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |      5 |  18000 | 2010-09-11 | coorinator |
++-------+----------+------------+-------------+------------+--------+--------+------------+------------+
+4 rows in set (0.00 sec)
+
+xi)
+
+mysql> SELECT deptno,SUM(salary) FROM employee GROUP BY deptno HAVING SUM(salary)<25000;
++--------+-------------+
+| deptno | SUM(salary) |
++--------+-------------+
+|      1 |        2000 |
+|      3 |        3000 |
+|      5 |       18000 |
++--------+-------------+
+3 rows in set (0.00 sec)
 
 
-
- 
