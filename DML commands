@@ -1,1 +1,23 @@
+mysql> DESCRIBE EMPLOYEE;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| empno     | int          | NO   | PRI | NULL    |       |
+| emp_name  | char(40)     | YES  |     | NULL    |       |
+| DOB       | date         | YES  |     | NULL    |       |
+| address   | varchar(100) | YES  |     | NULL    |       |
+| mobile_no | varchar(10)  | YES  |     | NULL    |       |
+| deptno    | int          | YES  |     | NULL    |       |
+| salary    | int          | YES  |     | NULL    |       |
+| doj       | date         | YES  |     | NULL    |       |
+| desg      | char(40)     | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+9 rows in set (0.29 sec)
+
+i)
+insert into employee values(1001,"Blessy",'1992-04-05',"Blessyvilla",8787878787,11,2000,'2000-05-07',"clerk");
+insert into employee values(1002,"Anu",'1970-06-12',"Anuvilla",4578655566,12,20000,'2003-01-13',"manager");
+insert into employee values(1003,"Annu",'1960-07-19',"Annuvilla",9876545678,13,3000,'2000-09-15',"staff");
+insert into employee values(1004,"Ponnu",'1992-09-08',"Ponnuvilla",9898765643,14,7800,'2010-09=12',"account");
+insert into employee values(1005,"Gopu",'1994-04-09',"Gopuvilla",9787665345,15,18000,'2010-09-11',"coorinator");
 
