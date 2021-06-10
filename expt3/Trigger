@@ -1,1 +1,25 @@
 
+mysql> create database expt3;
+Query OK, 1 row affected (0.29 sec)
+
+mysql> use expt3;
+Database changed
+
+mysql> create table employee(name varchar(50) NOT NULL,occupation varchar(40) NOT NULL,working_date date,working_hours varchar(10));
+Query OK, 0 rows affected (1.98 sec)
+
+mysql> insert into employee values('Ashly','nurse','2020-09-22',12);
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into employee values('Gopu','teacher','2020-10-12',10);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee values('Anupama','doctor','2020-01-01',13);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee values('Shanu','professor','2020-12-03',14);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into employee values('Dileep','Actor','2020-03-24',11);
+Query OK, 1 row affected (0.13 sec)
+
