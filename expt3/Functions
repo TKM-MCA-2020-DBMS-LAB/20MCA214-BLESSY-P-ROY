@@ -1,1 +1,40 @@
 
+mysql> use dbmslab;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_dbmslab |
++-------------------+
+| department        |
+| empdep            |
+| employee          |
+| empp              |
++-------------------+
+4 rows in set (0.28 sec)
+
+mysql> describe employee;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| empno     | int          | NO   | PRI | NULL    |       |
+| emp_name  | char(40)     | YES  |     | NULL    |       |
+| DOB       | date         | YES  |     | NULL    |       |
+| address   | varchar(100) | YES  |     | NULL    |       |
+| mobile_no | varchar(10)  | YES  |     | NULL    |       |
+| dno       | int          | YES  |     | NULL    |       |
+| salary    | int          | YES  |     | NULL    |       |
+| doj       | date         | YES  |     | NULL    |       |
+| desg      | char(40)     | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+9 rows in set (0.25 sec)
+
+mysql> select * from employee;
++-------+----------+------------+-------------+------------+------+--------+------------+------------+
+| empno | emp_name | DOB        | address     | mobile_no  | dno  | salary | doj        | desg       |
++-------+----------+------------+-------------+------------+------+--------+------------+------------+
+|  1001 | Blessy   | 1900-04-05 | Blessyvilla | 7034528879 |    1 |   2000 | 2000-05-07 | clerk      |
+|  1002 | Anu      | 1970-06-12 | Anuvilla    | 4578655566 |    2 |  25000 | 2003-01-13 | manager    |
+|  1003 | roopa    | 1960-07-19 | Annuvilla   | 9876545678 |    3 |   3000 | 2000-09-15 | staff      |
+|  1005 | Gopu     | 1994-04-09 | Gopuvilla   | 9787665345 |    5 |  18000 | 2010-09-11 | coorinator |
++-------+----------+------------+-------------+------------+------+--------+------------+------------+
+4 rows in set (0.15 sec)
