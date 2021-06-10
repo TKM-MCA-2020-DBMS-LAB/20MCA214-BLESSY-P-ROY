@@ -44,5 +44,27 @@ mysql> create Trigger before_insert_empworkinghours
     -> END //
 Query OK, 0 rows affected (0.58 sec)
 
+mysql> insert into employee values('Mathew','former','2020-02-08',15);
+    -> //
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into employee values('Alex','actor','2020-06-11',-12);
+    -> //
+Query OK, 1 row affected (0.20 sec)
+
+mysql> select * from employee;
+    -> //
++---------+------------+--------------+---------------+
+| name    | occupation | working_date | working_hours |
++---------+------------+--------------+---------------+
+| Ashly   | nurse      | 2020-09-22   | 12            |
+| Gopu    | teacher    | 2020-10-12   | 10            |
+| Anupama | doctor     | 2020-01-01   | 13            |
+| Shanu   | professor  | 2020-12-03   | 14            |
+| Dileep  | Actor      | 2020-03-24   | 11            |
+| Mathew  | former     | 2020-02-08   | 15            |
+| Alex    | actor      | 2020-06-11   | 0             |
++---------+------------+--------------+---------------+
+7 rows in set (0.00 sec)
 
 
