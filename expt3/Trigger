@@ -23,3 +23,26 @@ Query OK, 1 row affected (0.17 sec)
 mysql> insert into employee values('Dileep','Actor','2020-03-24',11);
 Query OK, 1 row affected (0.13 sec)
 
+mysql> select * from employee;
++---------+------------+--------------+---------------+
+| name    | occupation | working_date | working_hours |
++---------+------------+--------------+---------------+
+| Ashly   | nurse      | 2020-09-22   | 12            |
+| Gopu    | teacher    | 2020-10-12   | 10            |
+| Anupama | doctor     | 2020-01-01   | 13            |
+| Shanu   | professor  | 2020-12-03   | 14            |
+| Dileep  | Actor      | 2020-03-24   | 11            |
++---------+------------+--------------+---------------+
+5 rows in set (0.18 sec)
+
+mysql> DELIMITER //
+mysql> create Trigger before_insert_empworkinghours
+    -> BEFORE INSERT ON employee FOR EACH ROW
+    -> BEGIN
+    -> IF NEW.working_hours < 0 THEN SET NEW.working_hours = 0;
+    -> END IF;
+    -> END //
+Query OK, 0 rows affected (0.58 sec)
+
+
+
